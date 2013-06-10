@@ -1,0 +1,8 @@
+version = "0.1"
+description = "Library to simplify writing xapi plugins in OCaml"
+requires = "rpclib rpclib.unix xen-api-client"
+archive(byte) = "xapi_plugin.cma"
+archive(byte, plugin) = "xapi_plugin.cma"
+archive(native) = "xapi_plugin.cmxa"
+archive(native, plugin) = "xapi_plugin.cmxa"
+exists_of = "xapi_plugin.cma"

@@ -1,0 +1,9 @@
+name: xapi-plugin
+version: 0.1.0
+synopsis: Library to simplify writing xapi plugins in OCaml
+obuild-ver: 1
+
+library xapi_plugin
+  src-dir: lib
+  modules: xapi_plugin
+  build-deps: unix, rpclib, rpclib.unix, xen-api-client
