@@ -1,11 +1,5 @@
 let (|>) x f = f x
 
-let xapi_rpc request =
-  Rpc_client.do_rpc_unix
-    ~content_type:(Rpc_client.content_type_of_string "text/xml")
-    ~filename:(Filename.concat "/var/lib/xcp" "xapi")
-    ~path:"/" request
-
 let success result =
   let response = Rpc.success result in
   Printf.printf "%s" (Xmlrpc.string_of_response response)

@@ -6,4 +6,4 @@ obuild-ver: 1
 library xapi_plugin
   src-dir: lib
   modules: xapi_plugin
-  build-deps: unix, rpclib, rpclib.unix, xen-api-client
+  build-deps: unix, rpclib, rpclib.unix
