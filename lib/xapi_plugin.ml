@@ -1,4 +1,4 @@
-let (|>) x f = f x
+external (|>) : 'a -> ('a ->'b) -> 'b = "%revapply"
 
 let success result =
   let response = Rpc.success result in
