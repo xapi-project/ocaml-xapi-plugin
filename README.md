@@ -5,7 +5,6 @@ Build dependencies
 
 * [obuild](https://github.com/vincenthz/obuild)
 * [rpc](https://github.com/samoht/ocaml-rpc)
-* [xen-api-client](https://github.com/xen-org/xen-api-client)
 
 Usage
 -----
