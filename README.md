@@ -12,7 +12,7 @@ Usage
 Simple xapi plugin which waits a specified number of seconds, then returns the string "done":
 
 ```ocaml
-let main _ args =
+let main session_id args =
   if List.mem_assoc "sleep" args then begin
     let time = float_of_string (List.assoc "sleep" args) in
     Thread.delay time
