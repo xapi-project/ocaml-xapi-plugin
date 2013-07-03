@@ -38,3 +38,12 @@ and then run like so:
 # xe host-call-plugin host-uuid=0775b809-2064-4b1c-9b20-c02cab711ac8 plugin=test-ocaml-plugin fn=main args:sleep=5
 done
 ```
+
+It's also possible to run the same code as an interpreted script with these lines added to the top:
+
+```ocaml
+#!/path/to/ocaml
+
+#use "topfind"
+#require "xapi-plugin"
+```
