@@ -14,8 +14,8 @@ Simple xapi plugin which waits a specified number of seconds, then returns the s
 ```ocaml
 let main session_id args =
   if List.mem_assoc "sleep" args then begin
-    let time = float_of_string (List.assoc "sleep" args) in
-    Thread.delay time
+    let time = int_of_string (List.assoc "sleep" args) in
+    Unix.sleep time
   end;
   "done"
 
@@ -28,7 +28,7 @@ let () =
 Compile with:
 
 ```
-$ ocamlfind ocamlopt -thread -package rpclib -package xapi-plugin -linkpkg test_ocaml_plugin.ml -o test-ocaml-plugin
+$ ocamlfind ocamlopt -package unix -package rpclib -package xapi-plugin -linkpkg test_ocaml_plugin.ml -o test-ocaml-plugin
 ```
 
 Copy the resulting binary to `/etc/xapi.d/plugins` on an XCP/XenServer host,
