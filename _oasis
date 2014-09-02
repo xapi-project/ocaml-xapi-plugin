@@ -1,0 +1,17 @@
+OASISFormat:           0.3
+Name:                  xapi-plugin
+Version:               0.1.0
+Synopsis:              xapi plugin library
+License:               LGPL-2.1 with OCaml linking exception
+Authors:               John Else
+Copyrights:            (C) 2014 Citrix Systems
+BuildTools:            ocamlbuild
+Plugins:               META (0.3)
+
+Library xapi_plugin
+  Path:                lib
+  BuildDepends:        unix, rpclib, rpclib.unix
+  Findlibname:         worker
+  ByteOpt:             -bin-annot
+  NativeOpt:           -bin-annot
+  Modules:             Xapi_plugin

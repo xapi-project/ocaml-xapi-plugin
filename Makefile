@@ -1,15 +1,35 @@
-.PHONY: install uninstall clean
+all: build
 
-dist/build/lib-xapi_plugin/xapi_plugin.cmxa:
-	obuild configure
-	obuild build
+TESTS_FLAG=--enable-tests
 
-install:
-	ocamlfind install xapi-plugin lib/META \
-		$(wildcard dist/build/lib-xapi_plugin/*)
+NAME=xapi-plugin
+J=4
+
+setup.ml: _oasis
+	oasis setup
+
+setup.data: setup.ml
+	ocaml setup.ml -configure $(TESTS_FLAG)
+
+build: setup.data setup.ml
+	ocaml setup.ml -build -j $(J)
+
+doc: setup.data setup.ml
+	ocaml setup.ml -doc -j $(J)
+
+install: setup.data setup.ml
+	ocaml setup.ml -install
 
 uninstall:
-	ocamlfind remove xapi-plugin
+	ocamlfind remove $(NAME)
+
+test: setup.ml build
+	ocaml setup.ml -test
+
+reinstall: setup.ml
+	ocamlfind remove $(NAME) || true
+	ocaml setup.ml -reinstall
 
 clean:
-	rm -rf dist
+	ocamlbuild -clean
+	rm -f setup.data setup.log
