@@ -1,3 +1,6 @@
+ocaml-xapi-plugin [![Build status](https://travis-ci.org/xapi-project/ocaml-xapi-plugin.png?branch=master)](https://travis-ci.org/xapi-project/ocaml-xapi-plugin)
+-----------------
+
 Library to simplify writing xapi plugins in OCaml
 
 Build dependencies
