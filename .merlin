@@ -1,0 +1,4 @@
+PKG rpclib
+S lib
+
+B _build/lib
