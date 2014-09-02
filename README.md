@@ -3,7 +3,6 @@ Library to simplify writing xapi plugins in OCaml
 Build dependencies
 ------------------
 
-* [obuild](https://github.com/vincenthz/obuild)
 * [rpc](https://github.com/samoht/ocaml-rpc)
 
 Usage
