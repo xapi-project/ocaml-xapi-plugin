@@ -1,35 +1,29 @@
-all: build
+.PHONY: release build install uninstall clean test doc reindent
 
-TESTS_FLAG=--enable-tests
+release:
+	jbuilder build @install
 
-NAME=xapi-plugin
-J=4
+build:
+	jbuilder build @install --dev
 
-setup.ml: _oasis
-	oasis setup
-
-setup.data: setup.ml
-	ocaml setup.ml -configure $(TESTS_FLAG)
-
-build: setup.data setup.ml
-	ocaml setup.ml -build -j $(J)
-
-doc: setup.data setup.ml
-	ocaml setup.ml -doc -j $(J)
-
-install: setup.data setup.ml
-	ocaml setup.ml -install
+install:
+	jbuilder install
 
 uninstall:
-	ocamlfind remove $(NAME)
-
-test: setup.ml build
-	ocaml setup.ml -test
-
-reinstall: setup.ml
-	ocamlfind remove $(NAME) || true
-	ocaml setup.ml -reinstall
+	jbuilder uninstall
 
 clean:
-	ocamlbuild -clean
-	rm -f setup.data setup.log
+	jbuilder clean
+
+test:
+	jbuilder runtest
+
+# requires odoc
+doc:
+	jbuilder build @doc
+
+reindent:
+	git ls-files '*.ml*' | xargs ocp-indent --syntax cstruct -i
+
+
+.DEFAULT_GOAL := release
