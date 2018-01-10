@@ -18,8 +18,8 @@ let dispatch fn_table =
       let session_id = Rpc.string_of_rpc (List.nth call.Rpc.params 0) in
       let args =
         (match List.nth call.Rpc.params 1 with
-          | Rpc.Dict dict -> dict
-          | _ -> failwith "Arguments not supplied as a dict")
+         | Rpc.Dict dict -> dict
+         | _ -> failwith "Arguments not supplied as a dict")
         |> List.map (fun (k, v) -> (k, Rpc.string_of_rpc v))
       in
       try
@@ -29,7 +29,7 @@ let dispatch fn_table =
         failure (Rpc.String (Printexc.to_string e))
     end else
       failure (Rpc.Enum [
-        Rpc.String "UNKNOWN_XENAPI_PLUGIN_FUNCTION";
-        Rpc.String call.Rpc.name;
-      ])
+          Rpc.String "UNKNOWN_XENAPI_PLUGIN_FUNCTION";
+          Rpc.String call.Rpc.name;
+        ])
   end
