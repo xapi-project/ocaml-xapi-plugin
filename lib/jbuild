@@ -7,6 +7,5 @@
   (libraries (
     unix
     rpclib
-    rpclib.unix
   ))
 ))
