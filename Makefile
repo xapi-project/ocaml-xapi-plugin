@@ -1,29 +1,25 @@
-.PHONY: release build install uninstall clean test doc reindent
+PROFILE=release
 
-release:
-	jbuilder build @install
+.PHONY: build install uninstall clean test doc reindent
 
 build:
-	jbuilder build @install --dev
+	dune build @install --profile=$(PROFILE)
 
 install:
-	jbuilder install
+	dune install
 
 uninstall:
-	jbuilder uninstall
+	dune uninstall
 
 clean:
-	jbuilder clean
+	dune clean
 
 test:
-	jbuilder runtest
+	dune runtest --profile=$(PROFILE)
 
 # requires odoc
 doc:
-	jbuilder build @doc
+	dune build @doc --profile=$(PROFILE)
 
 reindent:
 	git ls-files '*.ml*' | xargs ocp-indent --syntax cstruct -i
-
-
-.DEFAULT_GOAL := release

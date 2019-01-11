@@ -1,11 +1,9 @@
-(jbuild_version 1)
-
-(library (
+(library
   (name xapi_plugin)
   (public_name xapi-plugin)
   (wrapped false)
-  (libraries (
+  (libraries
     unix
     rpclib
-  ))
-))
+  )
+)
